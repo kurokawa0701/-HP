@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜株式会社エンピ</title>
+<meta name="description" content="ITインフラ・データ活用に関するご相談、採用に関するお問い合わせはこちらから。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l7-7"/><path d="M10 14l5.5-5.5a4 4 0 0 1 5.7 5.7L15.5 19.9a4 4 0 0 1-5.7-5.7z"/></svg></span>
+      <span class="brand-name"><b>株式会社エンピ</b><small>ENPI Inc.</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="メニュー"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="gnav">
+      <a href="index.html">ホーム</a>
+      <a href="services.html">事業内容</a>
+      <a href="works.html">実績紹介</a>
+      <a href="company.html">会社情報</a>
+      <a class="btn btn-blue" href="contact.html">お問い合わせ</a>
+      <a class="btn btn-orange" href="recruit.html">採用情報</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-title">
+  <div class="container">
+    <div class="head"><span class="en">Contact</span><span class="ja">お問い合わせ</span></div>
+    <p class="lead">ITインフラ・データ活用に関するご相談、協業のご提案など、お気軽にお問い合わせください。内容を確認のうえ、担当者よりご連絡いたします。</p>
+  </div>
+</section>
+
+<section style="padding:48px 0 88px">
+  <div class="container" style="max-width:840px">
+    <form class="form-card reveal" data-demo>
+      <div class="form-msg">お問い合わせを受け付けました。担当者よりご連絡いたします。（※デモ表示です。実運用ではフォーム送信先の実装が必要です）</div>
+      <div class="form-row"><label>お問い合わせ種別<span class="req">必須</span></label>
+        <select required>
+          <option value="">選択してください</option>
+          <option>ITインフラに関するご相談</option>
+          <option>データ基盤・BI・分析に関するご相談</option>
+          <option>お見積もりのご依頼</option>
+          <option>採用に関するお問い合わせ</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-row"><label>会社名<span class="opt">任意</span></label><input type="text" placeholder="株式会社◯◯"></div>
+      <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" required placeholder="山田 太郎"></div>
+      <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" required placeholder="taro@example.com"></div>
+      <div class="form-row"><label>電話番号<span class="opt">任意</span></label><input type="tel" placeholder="090-1234-5678"></div>
+      <div class="form-row"><label>お問い合わせ内容<span class="req">必須</span></label><textarea required placeholder="ご相談内容をご記入ください"></textarea></div>
+      <button class="btn btn-blue btn-lg" type="submit" style="width:100%;font-size:16px;padding:18px">送信する</button>
+      <p class="note" style="margin-top:18px;text-align:center">※送信先メールアドレス等の連絡先情報は、確定後に実装してください。</p>
+    </form>
+  </div>
+</section>
+
+<section class="sec-alt" style="padding:72px 0">
+  <div class="container">
+    <div class="cta-band cta-orange reveal">
+      <h2>採用に関するご応募は、採用ページから。</h2>
+      <a class="btn btn-white-orange" href="recruit.html#entry" style="flex-shrink:0">エントリーフォームへ →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container inner">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark" style="width:32px;height:32px;border-radius:8px"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l7-7"/><path d="M10 14l5.5-5.5a4 4 0 0 1 5.7 5.7L15.5 19.9a4 4 0 0 1-5.7-5.7z"/></svg></span>
+          <span class="brand-name"><b style="font-size:16px">株式会社エンピ</b></span>
+        </a>
+        <p class="addr">〒335-0021 埼玉県戸田市大字新曽2220番地の1</p>
+      </div>
+      <nav class="fnav">
+        <div class="col">
+          <a href="services.html">事業内容</a>
+          <a href="works.html">実績紹介</a>
+          <a href="company.html">会社情報</a>
+        </div>
+        <div class="col">
+          <a class="recruit" href="recruit.html">採用情報</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </nav>
+    </div>
+    <p class="copyright">© 2026 ENPI Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
