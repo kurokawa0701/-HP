@@ -1,0 +1,22 @@
+# Cloudflare Pages 設定
+name = "enpi-site"
+compatibility_date = "2024-11-01"
+
+# デプロイ対象(静的ファイルの出力先)。このフォルダ自体を公開する場合は "."
+pages_build_output_dir = "."
+
+# --- D1 データベース(問い合わせ保存) ---
+# database_id は「wrangler d1 create enpi_inquiries」で発行される値に置き換える
+[[d1_databases]]
+binding = "DB"
+database_name = "enpi_inquiries"
+database_id = "<YOUR_D1_DATABASE_ID>"
+
+# --- R2 バケット(履歴書ファイルの保存 / 任意) ---
+# 履歴書をサーバーに保存したい場合はコメントアウトを外す
+# [[r2_buckets]]
+# binding = "RESUME_BUCKET"
+# bucket_name = "enpi-resumes"
+
+# 注意: RESEND_API_KEY / FROM_EMAIL / ADMIN_EMAIL は機密情報のため
+#       このファイルには書かず、ダッシュボードの「環境変数・シークレット」で設定してください。

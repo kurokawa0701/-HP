@@ -20,12 +20,33 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-tabs]').forEach(root => {
     const btns = root.querySelectorAll('.tab-btn');
     const panels = root.querySelectorAll('.tab-panel');
-    btns.forEach(btn => btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('is-active'));
-      panels.forEach(p => p.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      root.querySelector('#' + btn.dataset.target).classList.add('is-active');
-    }));
+    const tabsEl = root.querySelector('.tabs');
+
+    // モバイル用のプルダウン（タブから自動生成）
+    const sel = document.createElement('select');
+    sel.className = 'tab-select';
+    btns.forEach(btn => {
+      const opt = document.createElement('option');
+      opt.value = btn.dataset.target;
+      opt.textContent = btn.textContent;
+      if (btn.classList.contains('is-active')) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    if (tabsEl) {
+      const label = document.createElement('span');
+      label.className = 'tab-select-label';
+      label.textContent = '職種を選択（全' + btns.length + '種）';
+      tabsEl.parentNode.insertBefore(label, tabsEl);
+      tabsEl.parentNode.insertBefore(sel, tabsEl);
+    }
+
+    const activate = target => {
+      btns.forEach(b => b.classList.toggle('is-active', b.dataset.target === target));
+      panels.forEach(p => p.classList.toggle('is-active', p.id === target));
+      sel.value = target;
+    };
+    btns.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.target)));
+    sel.addEventListener('change', () => activate(sel.value));
   });
 
   // FAQ accordion
@@ -38,14 +59,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Forms (demo: show completion message)
-  document.querySelectorAll('form[data-demo]').forEach(form => {
-    form.addEventListener('submit', e => {
+  // Forms (実送信: Cloudflare Pages Function /api/submit へ POST)
+  document.querySelectorAll('form[data-ajax]').forEach(form => {
+    const msg = form.querySelector('.form-msg');
+    const successText = msg ? msg.textContent : '送信を受け付けました。';
+    const errorText = '送信に失敗しました。時間をおいて再度お試しいただくか、お電話でご連絡ください。';
+
+    form.addEventListener('submit', async e => {
       e.preventDefault();
-      const msg = form.querySelector('.form-msg');
-      if (msg) { msg.classList.add('is-visible'); }
-      form.querySelectorAll('input,select,textarea').forEach(el => { el.value = ''; });
-      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+      if (!form.reportValidity()) return;
+
+      const btn = form.querySelector('button[type=submit]');
+      const btnText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = '送信中…'; }
+
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        let out = {};
+        try { out = await res.json(); } catch (_) { out = { ok: res.ok }; }
+
+        if (res.ok && out.ok) {
+          if (msg) {
+            msg.textContent = successText;
+            msg.classList.remove('is-error');
+            msg.classList.add('is-visible');
+          }
+          form.querySelectorAll('input,select,textarea').forEach(el => {
+            if (el.type !== 'hidden') el.value = '';
+          });
+        } else {
+          throw new Error(out.error || 'failed');
+        }
+      } catch (err) {
+        if (msg) {
+          msg.textContent = errorText;
+          msg.classList.add('is-visible', 'is-error');
+        }
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+      }
     });
   });
 });

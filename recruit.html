@@ -30,7 +30,7 @@
   </div>
 </header>
 
-<section class="r-hero" style="background:linear-gradient(100deg,rgba(18,11,4,.88) 25%,rgba(58,36,16,.66) 55%,rgba(122,74,8,.4)),url(asset/recruit-hero.webp) center/cover no-repeat">
+<section class="r-hero">
   <div class="container inner">
     <p class="kicker">RECRUIT — ENPI Inc.</p>
     <h1>その技術力に、<br>見合う評価と、面白い仕事を。</h1>
@@ -248,13 +248,15 @@
   <div class="container" style="max-width:840px">
     <div class="sec-head"><span class="en">Entry</span><span class="ja">エントリーフォーム</span></div>
     <p style="font-size:14px;color:var(--gray);margin-bottom:32px">「まずはカジュアル面談だけ」でも大歓迎です。お気軽にご連絡ください。</p>
-    <form class="form-card" data-demo>
+    <form class="form-card" action="/api/submit" method="post" enctype="multipart/form-data" data-ajax>
+      <input type="hidden" name="formType" value="recruit">
+      <div class="hp" aria-hidden="true"><label>このフィールドは空のままにしてください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <div class="form-msg">エントリーを受け付けました。担当者よりご連絡いたします。</div>
-      <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" required placeholder="山田 太郎"></div>
-      <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" required placeholder="taro@example.com"></div>
-      <div class="form-row"><label>電話番号<span class="opt">任意</span></label><input type="tel" placeholder="090-1234-5678"></div>
+      <div class="form-row"><label>お名前<span class="req">必須</span></label><input type="text" name="name" required placeholder="山田 太郎"></div>
+      <div class="form-row"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="email" required placeholder="taro@example.com"></div>
+      <div class="form-row"><label>電話番号<span class="opt">任意</span></label><input type="tel" name="tel" placeholder="090-1234-5678"></div>
       <div class="form-row"><label>希望職種<span class="req">必須</span></label>
-        <select required>
+        <select name="position" required>
           <option value="">選択してください</option>
           <option>インフラエンジニア</option>
           <option>開発エンジニア</option>
@@ -262,8 +264,8 @@
           <option>まずはカジュアル面談を希望</option>
         </select>
       </div>
-      <div class="form-row"><label>経歴の概要<span class="opt">任意</span></label><textarea placeholder="現在のお仕事や経験年数など、簡単で構いません"></textarea></div>
-      <div class="form-row"><label>自由記入<span class="opt">任意</span></label><textarea placeholder="ご質問やご希望があればご記入ください"></textarea></div>
+      <div class="form-row"><label>履歴書・職務経歴書<span class="opt">任意</span></label><input type="file" name="resume" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"><p class="file-note">PDF・Word・画像形式（5MBまで）をアップロードできます</p></div>
+      <div class="form-row"><label>自由記入<span class="opt">任意</span></label><textarea name="freetext" placeholder="ご質問やご希望があればご記入ください"></textarea></div>
       <button class="btn btn-orange btn-lg" type="submit" style="width:100%;font-size:16px;padding:18px">エントリーする</button>
     </form>
   </div>
