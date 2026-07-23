@@ -31,6 +31,8 @@ h1,h2,h3,p{margin:0}
 .gnav a{color:var(--ink);font-size:14px;font-weight:700}
 .gnav a:hover{color:var(--blue)}
 .gnav a.is-current{color:var(--blue);border-bottom:2px solid var(--blue);padding-bottom:2px}
+.gnav a.btn-blue,.gnav a.btn-orange{color:#fff}
+.gnav a.btn-blue:hover,.gnav a.btn-orange:hover{color:#fff}
 .btn{display:inline-block;font-weight:700;border-radius:999px;text-align:center;transition:.2s;cursor:pointer;border:none;font-family:inherit}
 .btn-blue{background:var(--blue);color:#fff;font-size:13.5px;padding:11px 24px}
 .btn-blue:hover{background:var(--blue-hover);color:#fff}
@@ -90,9 +92,9 @@ h1,h2,h3,p{margin:0}
 .ph{border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:11px;letter-spacing:.14em;font-weight:700}
 .hero-photos .ph{aspect-ratio:4/3}
 .hero-photos .ph:nth-child(odd){transform:translateY(20px)}
-.ph-blue{background:linear-gradient(135deg,var(--blue),#2FA0E0);color:#fff;box-shadow:0 10px 28px rgba(0,60,120,.18)}
-.ph-navy{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff}
-.ph-sky{background:var(--sky2);color:var(--gray)}
+.ph-blue{box-shadow:0 10px 28px rgba(0,60,120,.18)}
+.ph-navy{box-shadow:0 10px 28px rgba(4,51,88,.16)}
+.ph-sky{background:var(--sky2)}
 
 /* Strength (photo + numbered list) */
 .strength-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
@@ -361,8 +363,8 @@ textarea{resize:vertical;min-height:140px}
   .hero .inner{grid-template-columns:1fr;padding:32px 0 56px;gap:36px}
   .hero .inner > div{order:2}
   .hero .inner > .hero-photos{order:1;grid-template-columns:1fr;gap:0}
-  .hero-photos .ph:not(:nth-child(3)){display:none}
-  .hero-photos .ph:nth-child(3){transform:none;aspect-ratio:16/9;box-shadow:0 8px 24px rgba(0,60,120,.15)}
+  .hero-photos .ph:not(:nth-child(1)){display:none}
+  .hero-photos .ph:nth-child(1){transform:none;aspect-ratio:16/9;box-shadow:0 8px 24px rgba(0,60,120,.15)}
   .strength-grid{grid-template-columns:1fr;gap:40px}
   .strength-photo{aspect-ratio:16/10}
   .proj-row{grid-template-columns:1fr;gap:28px}
