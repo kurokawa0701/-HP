@@ -12,6 +12,8 @@ body{margin:0;background:#fff;color:var(--ink);font-family:'Noto Sans JP',sans-s
 h1,h2,h3,h4{text-wrap:balance}
 p,li,dd,figcaption{text-wrap:pretty}
 body{word-break:auto-phrase}
+/* 語の途中で改行させたくないまとまり（Safari等でも有効） */
+.kw{white-space:nowrap}
 a{color:var(--blue);text-decoration:none;transition:.2s}
 a:hover{color:#3390D5}
 img{max-width:100%;display:block}
@@ -408,7 +410,7 @@ button[disabled]{opacity:.6;cursor:not-allowed}
   .steps{flex-direction:column;gap:12px}
   .step-arrow{justify-content:center;transform:rotate(90deg);padding:0}
   .company-grid{grid-template-columns:1fr !important}
-  .gnav{position:fixed;top:72px;right:0;left:0;background:#fff;flex-direction:column;align-items:stretch;padding:24px 32px;gap:18px;box-shadow:0 16px 32px rgba(0,60,120,.14);display:none}
+  .gnav{position:fixed;top:72px;right:0;left:0;background:#fff;flex-direction:column;align-items:stretch;text-align:center;padding:24px 32px;gap:18px;box-shadow:0 16px 32px rgba(0,60,120,.14);display:none}
   .gnav.is-open{display:flex}
   .nav-toggle{display:block}
   .site-footer .top{flex-direction:column;align-items:center;text-align:center;gap:36px;padding-bottom:36px}
